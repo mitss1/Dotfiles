@@ -16,6 +16,10 @@ chmod +x install
 install
 ```
 
+## Current plugins
+
+TBD
+
 ## Usage
 
 TBD
