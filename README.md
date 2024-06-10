@@ -18,8 +18,6 @@ install
 
 ## Plugin manager
 
-Plugin manager:
-
 [Packer](https://github.com/wbthomason/packer.nvim)
 
 ## Current plugins
