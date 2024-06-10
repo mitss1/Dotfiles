@@ -4,7 +4,7 @@ My Neovim setup
 
 ## Installation
 
-Run the file [install]([https://github.com/mitss1/Dotfiles/blob/master/install]) to install correct path.
+Run the file [install](https://github.com/mitss1/Dotfiles/blob/master/install) to install correct path.
 
 NB, might have to run ` chmod +x` command followed by the script name first.
 
