@@ -236,8 +236,8 @@ use({
     config = function()
       vim.g.floaterm_width = 0.8
       vim.g.floaterm_heigth = 0.8
-      vim.keymap.set('n', '<Leader>t', ':FloatermToggle<CR>')
-      vim.keymap.set('t', '<Leader>t', '<C-\\><C-n>:FloatermToggle<CR>')
+      vim.keymap.set('n', '<F1>', ':FloatermToggle<CR>')
+      vim.keymap.set('t', '<F1>', '<C-\\><C-n>:FloatermToggle<CR>')
       -- Some styling, does not work well with invis background
       -- vim.cmd([[
       --   highlight link Floaterm CursorLine
@@ -258,6 +258,18 @@ use({
   },
   config = function()
     require('user/plugins/treesitter')
+  end,
+})
+
+-- Language Server Protocol.
+use({
+  'neovim/nvim-lspconfig',
+  requires = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+  },
+  config = function()
+    require('user/plugins/lspconfig')
   end,
 })
 
