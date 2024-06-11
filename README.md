@@ -16,6 +16,10 @@ chmod +x install
 install
 ```
 
+You also need ripgrep and lazygit for telescope and lazygit to work.
+
+They can both be installed via brew.
+
 ## Plugin manager
 
 [Packer](https://github.com/wbthomason/packer.nvim)
