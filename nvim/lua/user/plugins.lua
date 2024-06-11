@@ -35,10 +35,11 @@ use('wbthomason/packer.nvim')
 
     -- Catpuccin
     -- !NB! Change theme in bufferline if changing global theme
-use ({ "catppuccin/nvim", as = "catppuccin",
+use ({
+    "catppuccin/nvim", as = "catppuccin",
     config = function()
       require("catppuccin").setup({ transparent_background = true,}) -- disables setting the background color.
-      vim.cmd.colorscheme "catppuccin"
+      vim.cmd('colorscheme catppuccin')
 
       vim.api.nvim_set_hl(0, 'FloatBorder', {
           fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
@@ -197,7 +198,7 @@ use({
   requires = 'kyazdani42/nvim-web-devicons',
   after = 'catppuccin',
   config = function()
-    require('bufferline').setup() -- Change require to 'user/plugins/bufferline' for custom setup
+    require('user/plugins/bufferline') -- Change require to 'user/plugins/bufferline' for custom setup
   end,
 })
 
@@ -268,6 +269,8 @@ use({
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'b0o/schemastore.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
+    'jayp0521/mason-null-ls.nvim',
   },
   config = function()
     require('user/plugins/lspconfig')
