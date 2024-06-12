@@ -26,7 +26,7 @@ local use = require('packer').use
 -- Packer can manage itself.
 use('wbthomason/packer.nvim')
 
--- Rose-Pine. 
+-- Rose-Pine.
 -- !NB! Change theme in bufferline if changing global theme
 -- use({ 'rose-pine/neovim', as = 'rose-pine',
 --   config = function()
