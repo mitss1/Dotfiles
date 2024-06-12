@@ -294,6 +294,29 @@ use({
   end,
 })
 
+-- PHP Refactoring Tools
+use({
+  'phpactor/phpactor',
+  ft = 'php',
+  run = 'composer install --no-dev --optimize-autoloader',
+  config = function()
+    vim.keymap.set('n', '<Leader>pm', ':PhpactorContextMenu<CR>') -- Keymap only wokrs in php files
+    vim.keymap.set('n', '<Leader>pn', ':PhpactorClassNew<CR>') -- Keymap only wokrs in php files
+  end,
+})
+
+-- Project Configuration.
+-- When in a php file, type :A to generate linked test tile
+-- When in the new file, type <Leader>pn to generate Laravel test template
+-- Trying :A again, will jump between the files
+use({
+  'tpope/vim-projectionist',
+  requires = 'tpope/vim-dispatch',
+  config = function()
+    require('user/plugins/projectionist')
+  end,
+})
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
