@@ -26,54 +26,54 @@ require('bufferline').setup({
   },
   highlights = {
     fill = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     background = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     tab = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     tab_close = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     close_button = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
       fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
     },
     close_button_visible = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
       fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
     },
     close_button_selected = {
       fg = { attribute = 'fg', highlight = 'StatusLineNonText' },
     },
     buffer_visible = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     modified = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     modified_visible = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     duplicate = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     duplicate_visible = {
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      bg = 'none',
     },
     separator = {
-      fg = { attribute = 'bg', highlight = 'StatusLine' },
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      fg = 'none',
+      bg = 'none',
     },
     separator_selected = {
-      fg = { attribute = 'bg', highlight = 'StatusLine' },
-      bg = { attribute = 'bg', highlight = 'Normal' }
+      fg = 'none',
+      bg = 'none',
     },
     separator_visible = {
-      fg = { attribute = 'bg', highlight = 'StatusLine' },
-      bg = { attribute = 'bg', highlight = 'StatusLine' },
+      fg = 'none',
+      bg = 'none',
     },
   },
 })

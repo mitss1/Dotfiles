@@ -1,4 +1,4 @@
-local separator = { '"▏"', color = 'StatusLineNonText' }
+local separator = { '"▏"', color = 'none' }
 
 require('lualine').setup({
   options = {
@@ -7,9 +7,34 @@ require('lualine').setup({
     globalstatus = true,
     theme = {
       normal = {
-        a = 'StatusLine',
-        b = 'StatusLine',
-        c = 'StatusLine',
+        a = { fg = '#ffffff', bg = 'none' },
+        b = { fg = '#ffffff', bg = 'none' },
+        c = { fg = '#ffffff', bg = 'none' },
+      },
+      insert = {
+        a = { fg = '#ffffff', bg = 'none' },
+        b = { fg = '#ffffff', bg = 'none' },
+        c = { fg = '#ffffff', bg = 'none' },
+      },
+      visual = {
+        a = { fg = '#ffffff', bg = 'none' },
+        b = { fg = '#ffffff', bg = 'none' },
+        c = { fg = '#ffffff', bg = 'none' },
+      },
+      replace = {
+        a = { fg = '#ffffff', bg = 'none' },
+        b = { fg = '#ffffff', bg = 'none' },
+        c = { fg = '#ffffff', bg = 'none' },
+      },
+      command = {
+        a = { fg = '#ffffff', bg = 'none' },
+        b = { fg = '#ffffff', bg = 'none' },
+        c = { fg = '#ffffff', bg = 'none' },
+      },
+      inactive = {
+        a = { fg = '#ffffff', bg = 'none' },
+        b = { fg = '#ffffff', bg = 'none' },
+        c = { fg = '#ffffff', bg = 'none' },
       },
     },
   },

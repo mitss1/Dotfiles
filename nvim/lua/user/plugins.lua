@@ -33,13 +33,24 @@ use('wbthomason/packer.nvim')
 --     require("rose-pine").setup({ disable_background = true })
 --     vim.cmd('colorscheme rose-pine')
 
-    -- Catpuccin
-    -- !NB! Change theme in bufferline if changing global theme
+-- Catpuccin
+-- !NB! Change theme in bufferline if changing global theme
+-- use ({
+--     "catppuccin/nvim", as = "catppuccin",
+--     config = function()
+--       require("catppuccin").setup({ transparent_background = true,}) -- disables setting the background color.
+--       vim.cmd('colorscheme catppuccin')
 use ({
-    "catppuccin/nvim", as = "catppuccin",
+    "michaeldyrynda/carbon", as = "carbon",
     config = function()
-      require("catppuccin").setup({ transparent_background = true,}) -- disables setting the background color.
-      vim.cmd('colorscheme catppuccin')
+      -- require("carbon").setup({ transparent_background = true,}) -- disables setting the background color.
+      vim.api.nvim_create_augroup('MyColors', { clear = true })
+      vim.api.nvim_create_autocmd('ColorScheme', {
+          group = 'MyColors',
+          pattern = '*',
+          command = 'hi Normal ctermbg=none guibg=none',
+        })
+      vim.cmd('colorscheme carbon')
 
       vim.api.nvim_set_hl(0, 'FloatBorder', {
           fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
@@ -196,7 +207,7 @@ use ({
 use({
   'akinsho/bufferline.nvim',
   requires = 'kyazdani42/nvim-web-devicons',
-  after = 'catppuccin',
+  after = 'carbon',
   config = function()
     require('user/plugins/bufferline') -- Change require to 'user/plugins/bufferline' for custom setup
   end,
