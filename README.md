@@ -13,7 +13,7 @@ chmod +x install
 ```
 
 ```bash
-install
+./install
 ```
 
 You also need ripgrep and lazygit for telescope and lazygit to work.
