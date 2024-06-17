@@ -43,7 +43,6 @@ use('wbthomason/packer.nvim')
 use ({
     "michaeldyrynda/carbon", as = "carbon",
     config = function()
-      -- require("carbon").setup({ transparent_background = true,}) -- disables setting the background color.
       vim.api.nvim_create_augroup('MyColors', { clear = true })
       vim.api.nvim_create_autocmd('ColorScheme', {
           group = 'MyColors',
@@ -51,6 +50,13 @@ use ({
           command = 'hi Normal ctermbg=none guibg=none',
         })
       vim.cmd('colorscheme carbon')
+
+      -- Set transparent background for signcolumn and line numbers
+      vim.cmd([[
+        highlight SignColumn guibg=none
+        highlight LineNr guibg=none
+        highlight CursorLineNr guibg=none
+        ]])
 
       vim.api.nvim_set_hl(0, 'FloatBorder', {
           fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
@@ -73,10 +79,6 @@ use ({
       vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
     end,
   })
-
--- Carbon (Not working with other plugins.. Dont know why)
--- use { "michaeldyrynda/carbon", as = "carbon" }
--- vim.cmd.colorscheme "carbon"
 
 -- Commenting support.(Type 'gcc' to comment/uncomment lines)
 use('tpope/vim-commentary')
