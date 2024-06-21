@@ -26,8 +26,8 @@ They can both be installed via brew.
 
 ## Current plugins
 
-TBD
+TBD.
 
 ## Usage
 
-TBD
+TBD.
