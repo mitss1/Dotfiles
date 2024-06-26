@@ -30,7 +30,7 @@ vim.keymap.set('n', '<Leader>k', ':nohlsearch<CR>')
 -- Open the current file in the default program (on Mac this should just be just `open`).
 vim.keymap.set('n', '<Leader>x', ':!xdg-open %<CR><CR>')
 
--- Move lines up and down. (Does not work atm, think 'A' for 'Alt' on windows is 
+-- Move lines up and down. (Does not work atm, think 'A' for 'Alt' on windows is
 -- kinda buggy on Mac)
 vim.keymap.set('i', '<A-j>', '<Esc>:move .+1<CR>==gi')
 vim.keymap.set('i', '<A-k>', '<Esc>:move .-2<CR>==gi')
