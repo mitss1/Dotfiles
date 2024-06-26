@@ -9,7 +9,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 require('lspconfig').intelephense.setup({ capabilities = capabilities })
 
 -- Vue, JavaScript, TypeScript
-require('lspconfig').volar.setup({ 
+require('lspconfig').volar.setup({
   capabilities = capabilities,
   -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
   -- This drastically improves the responsiveness of diagnostic updates on change
@@ -58,6 +58,7 @@ vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<CR>')
 vim.keymap.set('n', 'gr', ':Telescope lsp_references<CR>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+-- vim.keymap.set('n', '<Leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 -- Dont have an intelephense license, so renaming and some other functions might not work
 
 -- Commands
