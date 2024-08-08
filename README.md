@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/mitss1/Tasks">
-    <img src="https://github.com/user-attachments/assets/e7fb57f8-f118-4910-89c7-feaf9309b7aa" alt="Logo" width="400" height="80">
+    <img src="https://github.com/user-attachments/assets/ea07ff05-1783-47c1-aa5c-a7bad933e732" alt="Logo" width="80" height="80">
 
   </a>
 
