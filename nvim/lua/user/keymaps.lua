@@ -49,3 +49,11 @@ vim.keymap.set("v", "x", '"_x', opts)
 
 -- Lazygit
 vim.keymap.set('n', '<Leader>g', ':LazyGit<CR>')
+
+-- Map < and > to [ and ] for unimpaired.vim compatibility
+vim.api.nvim_set_keymap('n', '<', '[', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('n', '>', ']', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('o', '<', '[', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('o', '>', ']', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('x', '<', '[', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('x', '>', ']', { noremap = false, silent = true })
