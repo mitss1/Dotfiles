@@ -22,15 +22,15 @@ db.setup {
   }
 }
 
-vim.cmd([[
-augroup DashboardHighlights
-  autocmd ColorScheme * highlight DashboardHeader guifg=#f9b5ac
-  autocmd ColorScheme * highlight DashboardCenter guifg=#9876AA
-  autocmd ColorScheme * highlight DashboardShortcut guifg=#73A7A7
-  autocmd ColorScheme * highlight DashboardFooter guifg=#FFAE8F
-augroup end
-]])
-vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#f9b5ac' })
-vim.api.nvim_set_hl(0, 'DashboardCenter', { fg = '#9876AA' })
-vim.api.nvim_set_hl(0, 'DashboardShortcut', { fg = '#73A7A7' })
-vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#FFAE8F' })
+-- vim.cmd([[
+-- augroup DashboardHighlights
+--   autocmd ColorScheme * highlight DashboardHeader guifg=#f9b5ac
+--   autocmd ColorScheme * highlight DashboardCenter guifg=#9876AA
+--   autocmd ColorScheme * highlight DashboardShortcut guifg=#73A7A7
+--   autocmd ColorScheme * highlight DashboardFooter guifg=#FFAE8F
+-- augroup end
+-- ]])
+-- vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#f9b5ac' })
+-- vim.api.nvim_set_hl(0, 'DashboardCenter', { fg = '#9876AA' })
+-- vim.api.nvim_set_hl(0, 'DashboardShortcut', { fg = '#73A7A7' })
+-- vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#FFAE8F' })

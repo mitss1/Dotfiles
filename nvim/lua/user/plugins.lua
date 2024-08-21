@@ -26,12 +26,23 @@ local use = require('packer').use
 -- Packer can manage itself.
 use('wbthomason/packer.nvim')
 
--- Rose-Pine.
--- !NB! Change theme in bufferline if changing global theme
--- use({ 'rose-pine/neovim', as = 'rose-pine',
---   config = function()
---     require("rose-pine").setup({ disable_background = true })
---     vim.cmd('colorscheme rose-pine')
+-- Rose-pine
+use({ 'rose-pine/neovim', as = 'rose-pine',
+config = function()
+  require('rose-pine').setup({
+    disable_background = true,
+    disable_float_background = true,  -- Sikrer at float windows også er transparente
+  })
+  vim.cmd('colorscheme rose-pine')
+
+  -- Sikre transparent bakgrunn for ulike elementer
+  vim.api.nvim_set_hl(0, 'Normal', { ctermbg = 'none' })
+  vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'none' })
+  vim.api.nvim_set_hl(0, 'TelescopeNormal', { ctermbg = 'none' })
+  vim.api.nvim_set_hl(0, 'TelescopeBorder', { ctermbg = 'none' })
+  vim.api.nvim_set_hl(0, 'FloatBorder', { ctermbg = 'none' })
+end
+})
 
 -- Catpuccin
 -- !NB! Change theme in bufferline if changing global theme
@@ -40,45 +51,47 @@ use('wbthomason/packer.nvim')
 --     config = function()
 --       require("catppuccin").setup({ transparent_background = true,}) -- disables setting the background color.
 --       vim.cmd('colorscheme catppuccin')
-use ({
-    "michaeldyrynda/carbon", as = "carbon",
-    config = function()
-      vim.api.nvim_create_augroup('MyColors', { clear = true })
-      vim.api.nvim_create_autocmd('ColorScheme', {
-          group = 'MyColors',
-          pattern = '*',
-          command = 'hi Normal ctermbg=none guibg=none',
-        })
-      vim.cmd('colorscheme carbon')
 
-      -- Set transparent background for signcolumn and line numbers
-      vim.cmd([[
-        highlight SignColumn guibg=none
-        highlight LineNr guibg=none
-        highlight CursorLineNr guibg=none
-        ]])
+-- Carbon
+-- use ({
+--     "michaeldyrynda/carbon", as = "carbon",
+--     config = function()
+--       vim.api.nvim_create_augroup('MyColors', { clear = true })
+--       vim.api.nvim_create_autocmd('ColorScheme', {
+--           group = 'MyColors',
+--           pattern = '*',
+--           command = 'hi Normal ctermbg=none guibg=none',
+--         })
+--       vim.cmd('colorscheme carbon')
 
-      vim.api.nvim_set_hl(0, 'FloatBorder', {
-          fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-          bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-        })
+--       -- Set transparent background for signcolumn and line numbers
+--       vim.cmd([[
+--         highlight SignColumn guibg=none
+--         highlight LineNr guibg=none
+--         highlight CursorLineNr guibg=none
+--         ]])
 
-      -- Make cursor-line background invisible
-      vim.api.nvim_set_hl(0, 'FloatBorder', {
-          fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-          bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-        })
+--       vim.api.nvim_set_hl(0, 'FloatBorder', {
+--           fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+--           bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+--         })
 
-      vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
+--       -- Make cursor-line background invisible
+--       vim.api.nvim_set_hl(0, 'FloatBorder', {
+--           fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+--           bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+--         })
 
-      vim.api.nvim_set_hl(0, 'StatusLineNonText', {
-          fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
-          bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
-        })
+--       vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
 
-      vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
-    end,
-  })
+--       vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+--           fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
+--           bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+--         })
+
+--       vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
+--     end,
+--   })
 
 -- Commenting support.(Type 'gcc' to comment/uncomment lines)
 use('tpope/vim-commentary')
@@ -209,7 +222,7 @@ use ({
 use({
   'akinsho/bufferline.nvim',
   requires = 'kyazdani42/nvim-web-devicons',
-  after = 'carbon',
+  after = 'rose-pine',
   config = function()
     require('user/plugins/bufferline') -- Change require to 'user/plugins/bufferline' for custom setup
   end,
