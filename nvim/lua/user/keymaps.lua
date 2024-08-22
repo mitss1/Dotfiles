@@ -46,6 +46,7 @@ vim.keymap.set("n", "c", '"_c', opts)
 vim.keymap.set("v", "c", '"_c', opts)
 vim.keymap.set("n", "x", '"_x', opts)
 vim.keymap.set("v", "x", '"_x', opts)
+vim.keymap.set("v", "d", '"_d', opts)
 
 -- Lazygit
 vim.keymap.set('n', '<Leader>g', ':LazyGit<CR>')
