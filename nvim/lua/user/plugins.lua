@@ -412,6 +412,89 @@ use ({
     end,
 })
 
+-- -- Obsidian
+use({
+  "epwalsh/obsidian.nvim",
+  tag = "*",
+  requires = {
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "hrsh7th/nvim-cmp",
+  },
+  config = function()
+    require("obsidian").setup({
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/vaults/personal",
+        },
+      },
+      daily_notes = {
+        folder = "notes/dailies",
+        default_tags = { "daily-notes" },
+      },
+      completion = {
+        nvim_cmp = true,
+        min_chars = 2,
+      },
+      new_notes_location = "current_dir",
+      picker = {
+        name = "telescope.nvim",
+        note_mappings = {
+          new = "<leader>os",
+          insert_link = "<leader>ol",
+        },
+      },
+      sort_by = "modified",
+      sort_reversed = true,
+      search_max_lines = 1000,
+      open_notes_in = "current",
+
+      note_id_func = function(title)
+        local suffix = ""
+        if title ~= nil then
+          -- Gjør tittelen om til et gyldig filnavn
+          suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        else
+          -- Hvis ingen tittel, lag en tilfeldig 4-bokstavskode
+          for _ = 1, 4 do
+            suffix = suffix .. string.char(math.random(65, 90))
+          end
+        end
+        return tostring(os.time()) .. "-" .. suffix
+      end,
+
+      note_path_func = function(spec)
+        local path = spec.dir / tostring(spec.id)
+        return path:with_suffix(".md")
+      end,
+    })
+
+  -- 🔥 Mapp keybinds riktig HER, utenfor `obsidian.setup()`
+  vim.keymap.set("n", "<leader>of", ":ObsidianQuickSwitch<CR>", { desc = "Åpne notater" })
+  vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Nytt notat" })
+  vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>", { desc = "Dagens notat" })
+  vim.keymap.set("n", "<leader>ox", function()
+    require("obsidian.util").toggle_checkbox()
+  end, { desc = "Toggle checkbox" })
+  vim.keymap.set("n", "<leader>ol", function()
+    local obsidian = require("obsidian")
+    local link = obsidian.util.get_link_under_cursor()
+    if link then
+      obsidian.util.follow_link(link)
+    else
+      print("Ingen gyldig Obsidian-lenke funnet")
+    end
+  end, { desc = "Følg wiki-lenke i Obsidian" })
+  vim.keymap.set("n", "<leader>og", function()
+    require("telescope.builtin").live_grep({
+        search_dirs = { "~/vaults/personal" }
+      })
+  end, { desc = "Søk i Obsidian-notater med Telescope" })
+  end,
+})
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
