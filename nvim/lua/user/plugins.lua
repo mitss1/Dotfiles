@@ -484,7 +484,7 @@ use({
         search_dirs = { "~/vaults/personal" }
       })
   end, { desc = "Søk i Obsidian-notater med Telescope" })
-  vim.keymap.set("n", "<leader>od", function()
+  vim.keymap.set("n", "<leader>oD", function()
     local file = vim.fn.expand("%:p") -- Hent filbanen til notatet
     local confirm = vim.fn.input("Slett denne filen? (y/n): ")
 
