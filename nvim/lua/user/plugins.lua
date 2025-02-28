@@ -478,20 +478,24 @@ use({
   vim.keymap.set("n", "<leader>ox", function()
     require("obsidian.util").toggle_checkbox()
   end, { desc = "Toggle checkbox" })
-  vim.keymap.set("n", "<leader>ol", function()
-    local obsidian = require("obsidian")
-    local link = obsidian.util.get_link_under_cursor()
-    if link then
-      obsidian.util.follow_link(link)
-    else
-      print("Ingen gyldig Obsidian-lenke funnet")
-    end
-  end, { desc = "Følg wiki-lenke i Obsidian" })
+  vim.keymap.set("n", "gf", ":ObsidianFollowLink<CR>", { desc = "Følg Obsidian-lenke" })
   vim.keymap.set("n", "<leader>og", function()
     require("telescope.builtin").live_grep({
         search_dirs = { "~/vaults/personal" }
       })
   end, { desc = "Søk i Obsidian-notater med Telescope" })
+  vim.keymap.set("n", "<leader>od", function()
+    local file = vim.fn.expand("%:p") -- Hent filbanen til notatet
+    local confirm = vim.fn.input("Slett denne filen? (y/n): ")
+
+    if confirm == "y" then
+      vim.fn.delete(file) -- Slett filen
+      vim.cmd("bd") -- Lukk bufferen
+      print("Fil slettet: " .. file)
+    else
+      print("Sletting avbrutt.")
+    end
+  end, { desc = "Slett Obsidian-notat" })
   end,
 })
 
