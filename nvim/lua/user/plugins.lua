@@ -412,7 +412,7 @@ use ({
     end,
 })
 
--- -- Obsidian
+-- Obsidian
 use({
   "epwalsh/obsidian.nvim",
   tag = "*",
@@ -471,7 +471,6 @@ use({
       end,
     })
 
-  -- 🔥 Mapp keybinds riktig HER, utenfor `obsidian.setup()`
   vim.keymap.set("n", "<leader>of", ":ObsidianQuickSwitch<CR>", { desc = "Åpne notater" })
   vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Nytt notat" })
   vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>", { desc = "Dagens notat" })
