@@ -97,6 +97,7 @@ end
 use('tpope/vim-commentary')
 
 -- Add, change, and delete surrounding text. Type 'cs' + sign you want to change " for example + sign you want it changed to
+-- ysiW" to surround a word with ". yss" to surround entire line with ". Use visual-mode and press S" to surround marked text with ".
 use('tpope/vim-surround')
 
 -- Useful commands like :Rename and :SudoWrite. (Not tried this yet)
