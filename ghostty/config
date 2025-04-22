@@ -10,7 +10,7 @@ cursor-style = block
 adjust-cell-height = 35%
 background-opacity = 0.80
 
-macos-icon = glass
+# macos-icon = chalkboard
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
