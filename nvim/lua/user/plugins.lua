@@ -116,7 +116,7 @@ use('tpope/vim-repeat')
 use('sheerun/vim-polyglot')
 
 -- Navigate seamlessly between Vim windows and Tmux panes.
--- use('christoomey/vim-tmux-navigator')
+use('christoomey/vim-tmux-navigator')
 
 -- Jump to the last location when opening a file.
 use('farmergreg/vim-lastplace')
@@ -237,14 +237,14 @@ use({
   })
 
 -- Add a dashboard
-use {
-  'nvimdev/dashboard-nvim',
-  event = 'VimEnter',
-  config = function()
-    require('user/plugins/dashboard-nvim')
-  end,
-  requires = {'nvim-tree/nvim-web-devicons'}
-}
+-- use {
+--   'nvimdev/dashboard-nvim',
+--   event = 'VimEnter',
+--   config = function()
+--     require('user/plugins/dashboard-nvim')
+--   end,
+--   requires = {'nvim-tree/nvim-web-devicons'}
+-- }
 
 -- LazyGit using Telescope
 use({
