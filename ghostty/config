@@ -2,11 +2,15 @@ font-family = JetBrainsMono Nerd Font
 #font-family = Iosevka Nerd Font
 # font-family = SFMono Nerd Font
 font-size = 20
+font-thicken = 1
+font-thicken-strength = 100
 theme = rose-pine
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 adjust-cell-height = 35%
 background-opacity = 0.80
+
+macos-icon = glass
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
