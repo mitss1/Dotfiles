@@ -505,7 +505,7 @@ use('github/copilot.vim')
 
 vim.g.copilot_no_tab_map = true
 
-vim.keymap.set('i', '<C-l>', function()
+vim.keymap.set('i', '<C-J>', function()
   return vim.fn['copilot#Accept']()
 end, {
   expr = true,
