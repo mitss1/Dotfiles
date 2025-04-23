@@ -499,7 +499,16 @@ use({
   end,
 })
 
+-- copilot
+vim.g.copilot_no_tab_map = true
+
 use('github/copilot.vim')
+
+vim.keymap.set('i', '<Leader><Tab>', 'copilot#Accept("<CR>")', {
+  expr = true,
+  silent = true,
+  desc = 'Copilot: Accept suggestion'
+})
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
