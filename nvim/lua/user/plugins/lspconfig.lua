@@ -6,17 +6,19 @@ require('mason-lspconfig').setup({ automatic_installation = true })
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- PHP
--- require('lspconfig').intelephense.setup({ capabilities = capabilities })
 require('lspconfig').intelephense.setup({
     commands = {
-      IntelephenseIndex = {
-        function()
-          vim.lsp.buf.execute_command({ command = 'intelephense.index.workspace' })
-        end,
-      },
+        IntelephenseIndex = {
+            function()
+                vim.lsp.buf.execute_command({ command = 'intelephense.index.workspace' })
+            end,
+        },
     },
     capabilities = capabilities,
-  })
+    init_options = {
+        licenceKey = vim.env.INTELEPHENSE_LICENSE_KEY
+    }
+})
 
 -- Vue, JavaScript, TypeScript
 require('lspconfig').volar.setup({
