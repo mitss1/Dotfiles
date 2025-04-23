@@ -6,7 +6,14 @@ require('mason-lspconfig').setup({ automatic_installation = true })
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- PHP
-require('lspconfig').intelephense.setup({ capabilities = capabilities })
+-- require('lspconfig').intelephense.setup({ capabilities = capabilities })
+require('lspconfig').intelephense.setup({
+    capabilities = capabilities,
+    cmd = {
+      vim.fn.stdpath("data") .. "/mason/bin/intelephense",
+      "--stdio"
+    },
+  })
 
 -- Vue, JavaScript, TypeScript
 require('lspconfig').volar.setup({
@@ -58,8 +65,9 @@ vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<CR>')
 vim.keymap.set('n', 'gr', ':Telescope lsp_references<CR>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-vim.keymap.set('n', '<Leader>ag', require('telescope.builtin').lsp_code_actions, { desc = 'Telescope Code Action' })
--- vim.keymap.set('n', '<Leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+-- vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, { desc = 'LSP: Code Action' })
+-- vim.keymap.set('n', 'ga', require('telescope.builtin').lsp_code_actions, { desc = 'Telescope Code Action' })
+vim.keymap.set('n', '<Leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 -- Dont have an intelephense license, so renaming and some other functions might not work
 
 -- Commands
