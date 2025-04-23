@@ -8,11 +8,14 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 -- PHP
 -- require('lspconfig').intelephense.setup({ capabilities = capabilities })
 require('lspconfig').intelephense.setup({
-    capabilities = capabilities,
-    cmd = {
-      vim.fn.stdpath("data") .. "/mason/bin/intelephense",
-      "--stdio"
+    commands = {
+      IntelephenseIndex = {
+        function()
+          vim.lsp.buf.execute_command({ command = 'intelephense.index.workspace' })
+        end,
+      },
     },
+    capabilities = capabilities,
   })
 
 -- Vue, JavaScript, TypeScript

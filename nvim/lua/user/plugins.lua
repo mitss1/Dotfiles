@@ -292,6 +292,7 @@ use({
 -- Language Server Protocol.
 use({
   'neovim/nvim-lspconfig',
+  event = 'BufReadPre',
   requires = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
@@ -500,12 +501,15 @@ use({
 })
 
 -- copilot
-vim.g.copilot_no_tab_map = true
-
 use('github/copilot.vim')
 
-vim.keymap.set('i', '<Leader><Tab>', 'copilot#Accept("<CR>")', {
+vim.g.copilot_no_tab_map = true
+
+vim.keymap.set('i', '<C-l>', function()
+  return vim.fn['copilot#Accept']()
+end, {
   expr = true,
+  replace_keycodes = false,
   silent = true,
   desc = 'Copilot: Accept suggestion'
 })
