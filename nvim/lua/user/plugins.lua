@@ -27,21 +27,22 @@ local use = require('packer').use
 use('wbthomason/packer.nvim')
 
 -- Rose-pine
-use({ 'rose-pine/neovim', as = 'rose-pine',
-config = function()
-  require('rose-pine').setup({
-    disable_background = true,
-    disable_float_background = true,  -- Sikrer at float windows også er transparente
-  })
-  vim.cmd('colorscheme rose-pine')
+use({
+  'rose-pine/neovim',
+  config = function()
+    require('rose-pine').setup({
+      disable_background = true,
+      disable_float_background = true,  -- Sikrer at float windows også er transparente
+    })
+    vim.cmd('colorscheme rose-pine')
 
-  -- Sikre transparent bakgrunn for ulike elementer
-  vim.api.nvim_set_hl(0, 'Normal', { ctermbg = 'none' })
-  vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'none' })
-  vim.api.nvim_set_hl(0, 'TelescopeNormal', { ctermbg = 'none' })
-  vim.api.nvim_set_hl(0, 'TelescopeBorder', { ctermbg = 'none' })
-  vim.api.nvim_set_hl(0, 'FloatBorder', { ctermbg = 'none' })
-end
+    -- Sikre transparent bakgrunn for ulike elementer
+    vim.api.nvim_set_hl(0, 'Normal', { ctermbg = 'none' })
+    vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'none' })
+    vim.api.nvim_set_hl(0, 'TelescopeNormal', { ctermbg = 'none' })
+    vim.api.nvim_set_hl(0, 'TelescopeBorder', { ctermbg = 'none' })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { ctermbg = 'none' })
+  end
 })
 
 -- Catpuccin
@@ -237,14 +238,14 @@ use({
   })
 
 -- Add a dashboard
--- use {
---   'nvimdev/dashboard-nvim',
---   event = 'VimEnter',
---   config = function()
---     require('user/plugins/dashboard-nvim')
---   end,
---   requires = {'nvim-tree/nvim-web-devicons'}
--- }
+use {
+  'nvimdev/dashboard-nvim',
+  event = 'VimEnter',
+  config = function()
+    require('user/plugins/dashboard-nvim')
+  end,
+  requires = {'nvim-tree/nvim-web-devicons'}
+}
 
 -- LazyGit using Telescope
 use({

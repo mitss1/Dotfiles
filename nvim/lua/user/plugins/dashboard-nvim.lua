@@ -1,5 +1,5 @@
-local db = require('dashboard')
-db.setup {
+require('dashboard').setup {
+  theme = 'hyper',
   config = {
     header = {
       '',
@@ -13,24 +13,16 @@ db.setup {
       '',
     },
     shortcut = {
-      { icon = ' ', desc = 'New file ', action = 'enew' },
-      { icon = ' ', key = 'SPC ff', desc = 'Find file ', action = 'Telescope find_files' },
-      { icon = '󰌍 ', key = 'SPC fh', desc = 'Recent files ', action = 'Telescope oldfiles' },
-      { icon = '󰮗 ', key = 'SPC fg', desc = 'Find Word ', action = 'Telescope live_grep' },
+      { icon = ' ', desc = 'New file', group = 'DashboardShortcut', action = 'enew', key = 'n' },
+      { icon = ' ', desc = 'Find file', group = 'DashboardShortcut', action = 'Telescope find_files', key = 'f' },
+      { icon = '󰌍 ', desc = 'Recent files', group = 'DashboardShortcut', action = 'Telescope oldfiles', key = 'r' },
+      { icon = '󰮗 ', desc = 'Find Word', group = 'DashboardShortcut', action = 'Telescope live_grep', key = 'g' },
     },
     footer = {}
   }
 }
 
--- vim.cmd([[
--- augroup DashboardHighlights
---   autocmd ColorScheme * highlight DashboardHeader guifg=#f9b5ac
---   autocmd ColorScheme * highlight DashboardCenter guifg=#9876AA
---   autocmd ColorScheme * highlight DashboardShortcut guifg=#73A7A7
---   autocmd ColorScheme * highlight DashboardFooter guifg=#FFAE8F
--- augroup end
--- ]])
--- vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#f9b5ac' })
--- vim.api.nvim_set_hl(0, 'DashboardCenter', { fg = '#9876AA' })
--- vim.api.nvim_set_hl(0, 'DashboardShortcut', { fg = '#73A7A7' })
--- vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#FFAE8F' })
+-- Highlight groups for rose-pine theme
+vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#f9b5ac' })
+vim.api.nvim_set_hl(0, 'DashboardShortcut', { fg = '#73A7A7' })
+vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#FFAE8F' })
