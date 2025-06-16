@@ -224,7 +224,6 @@ use ({
 use({
   'akinsho/bufferline.nvim',
   requires = 'kyazdani42/nvim-web-devicons',
-  after = 'rose-pine',
   config = function()
     require('user/plugins/bufferline') -- Change require to 'user/plugins/bufferline' for custom setup
   end,
@@ -240,7 +239,6 @@ use({
 -- Add a dashboard
 use {
   'nvimdev/dashboard-nvim',
-  event = 'VimEnter',
   config = function()
     require('user/plugins/dashboard-nvim')
   end,
@@ -480,7 +478,8 @@ use({
   vim.keymap.set("n", "<leader>ox", function()
     require("obsidian.util").toggle_checkbox()
   end, { desc = "Toggle checkbox" })
-  vim.keymap.set("n", "gf", ":ObsidianFollowLink<CR>", { desc = "Følg Obsidian-lenke" })
+  -- Obsidian gf mapping disabled to avoid conflicts with LSP
+  -- vim.keymap.set("n", "gf", ":ObsidianFollowLink<CR>", { desc = "Følg Obsidian-lenke" })
   vim.keymap.set("n", "<leader>og", function()
     require("telescope.builtin").live_grep({
         search_dirs = { "~/vaults/personal" }

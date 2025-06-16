@@ -1,9 +1,26 @@
 -- Setup Mason to automatically install LSP servers
 -- Can run :Mason to bring up UI
 require('mason').setup()
-require('mason-lspconfig').setup({ automatic_installation = true })
+require('mason-lspconfig').setup({
+    ensure_installed = { 'intelephense', 'volar', 'tailwindcss', 'jsonls' }
+})
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- LSP keymaps function
+local on_attach = function(client, bufnr)
+  local opts = { buffer = bufnr, silent = true }
+  
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
+  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', '<Leader>d', vim.diagnostic.open_float, opts)
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+end
 
 -- PHP
 require('lspconfig').intelephense.setup({
@@ -15,6 +32,7 @@ require('lspconfig').intelephense.setup({
         },
     },
     capabilities = capabilities,
+    on_attach = on_attach,
     init_options = {
         licenceKey = vim.env.INTELEPHENSE_LICENSE_KEY
     }
@@ -23,17 +41,22 @@ require('lspconfig').intelephense.setup({
 -- Vue, JavaScript, TypeScript
 require('lspconfig').volar.setup({
   capabilities = capabilities,
+  on_attach = on_attach,
   -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
   -- This drastically improves the responsiveness of diagnostic updates on change
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 })
 
 -- Tailwind CSS
-require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
+require('lspconfig').tailwindcss.setup({ 
+  capabilities = capabilities,
+  on_attach = on_attach
+})
 
 -- JSON
 require('lspconfig').jsonls.setup({
   capabilities = capabilities,
+  on_attach = on_attach,
   settings = {
     json = {
       schemas = require('schemastore').json.schemas(),
@@ -59,21 +82,7 @@ require('null-ls').setup({
   },
 })
 
-require('mason-null-ls').setup({ automatic_installation = true })
-
--- Keymaps
-vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
-vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<CR>')
-vim.keymap.set('n', 'gr', ':Telescope lsp_references<CR>')
-vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
--- vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, { desc = 'LSP: Code Action' })
--- vim.keymap.set('n', 'ga', require('telescope.builtin').lsp_code_actions, { desc = 'Telescope Code Action' })
-vim.keymap.set('n', '<Leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
--- Dont have an intelephense license, so renaming and some other functions might not work
+require('mason-null-ls').setup()
 
 -- Commands
 vim.api.nvim_create_user_command('Format', vim.lsp.buf.format or vim.lsp.buf.formatting, {})
